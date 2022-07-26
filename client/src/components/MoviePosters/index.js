@@ -20,7 +20,29 @@ import {Link} from 'react-router-dom'
 import AppBar from "@material-ui/core/AppBar";
 
 
-export default function index() {
+export default function MoviePosters() {
+    const [links, setLinks ] = React.useState([])
+    
+    React.useEffect(() => {
+        // const serverURL = ""
+        const serverURL = "http://ec2-18-188-101-79.us-east-2.compute.amazonaws.com:3035"; //enable for deployed mode; Change PORT to the port number given to you;
+
+        async function loadMovies() {
+            const url = serverURL + "/api/getMoviePosters"
+            const response = await fetch(url, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              }
+            })
+            const movieList = await response.json()
+            setLinks(movieList)
+            console.log(links)
+          }
+          loadMovies()
+    }, [])
+
+
   return (
     <div>
         <AppBar position="static">
@@ -45,17 +67,16 @@ export default function index() {
             justifyContent="center"
             alignItems="center"
         >
-            <h1>Welcome to serena's movie review website</h1>
-            <Link to="/search">
-                <h1>search</h1>
-            </Link>
-            <Link to="/reviews">
-                <h1>reviews</h1>
-            </Link>
-            <Link to="/moviePosters">
-                <h1>movie reviews</h1>
-            </Link>
-            <img src="https://www.giantbomb.com/a/uploads/scale_small/15/159969/3282450-chungus.png"></img>
+            <h1>Movie Posters</h1>
+{
+    links.map((link) => {
+        return (<div>
+            <h1>{link.name}</h1>
+            <img src={link.poster_link}></img>
+
+        </div>)
+    })
+}
         </Grid>
     </div>
   )

@@ -16,6 +16,8 @@ import Button from "@material-ui/core/Button";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import Paper from "@material-ui/core/Paper";
 import { FormLabel } from '@material-ui/core';
+import {Link} from 'react-router-dom'
+import AppBar from "@material-ui/core/AppBar";
 
 
 //Dev mode
@@ -33,6 +35,22 @@ const fetch = require("node-fetch");
 
 export default function Home() {
   return (
+    <>
+    <AppBar position="static">
+    <h1>Sereana Very Swag B)</h1>
+    <Link to="/" style={{"color": "white"}}>
+        Home
+    </Link>
+    <Link to="/search" style={{"color": "white"}}>
+        search
+    </Link>
+    <Link to="/reviews" style={{"color": "white"}}>
+        reviews
+    </Link>
+    <Link to="/moviePosters">
+                movie reviews
+            </Link>
+</AppBar>
     <Grid
       container
       direction="column"
@@ -45,6 +63,7 @@ export default function Home() {
       <Review>
       </Review>
     </Grid>
+    </>
   )
 }
 const Review =({}) => {
