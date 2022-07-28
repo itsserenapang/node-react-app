@@ -123,10 +123,10 @@ app.post('/api/searchMovies', (req, res) => {
 	join s32pang.roles R on R.movie_id = M.id
 	join s32pang.actors A on A.id = R.actor_id
 	left join s32pang.Review REV on REV.movieID = M.id
-	where
-`
+	where`
+
 	let prev = false;
-	if (req.body.director.length !== 0){
+	if (req.body.director.length){
 		sql = sql + ` CONCAT(D.first_name, " ", D.last_name) like "%${req.body.director}%"` 
 		prev = true
 	}
@@ -136,7 +136,7 @@ app.post('/api/searchMovies', (req, res) => {
 		sql = sql +" and " 
 		prev = false
 	}
-	if (req.body.actor.length !== 0){
+	if (req.body.actor){
 		sql = sql + ` CONCAT(A.first_name, " ", A.last_name) like "%${req.body.actor}%"` 
 		prev = true
 	}
@@ -167,5 +167,5 @@ app.post('/api/searchMovies', (req, res) => {
 });
 
 
-// app.listen(port, () => console.log(`Listening on port ${port}`)); //for the dev version
+ //app.listen(port, () => console.log(`Listening on port ${port}`)); //for the dev version
 app.listen(port, '172.31.31.77'); //for the deployed version, specify the IP address of the server
