@@ -25,7 +25,7 @@ export default function MoviePosters() {
     
     React.useEffect(() => {
         // const serverURL = ""
-        const serverURL = "http://ec2-18-188-101-79.us-east-2.compute.amazonaws.com:3035"; //enable for deployed mode; Change PORT to the port number given to you;
+        const serverURL = "http://ec2-18-216-101-119.us-east-2.compute.amazonaws.com:3035"; //enable for deployed mode; Change PORT to the port number given to you;
 
         async function loadMovies() {
             const url = serverURL + "/api/getMoviePosters"

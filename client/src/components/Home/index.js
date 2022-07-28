@@ -24,7 +24,7 @@ import AppBar from "@material-ui/core/AppBar";
 //const serverURL = ""; //enable for dev mode
 
 //Deployment mode instructions
-const serverURL = "http://ec2-18-188-101-79.us-east-2.compute.amazonaws.com:3035"; //enable for deployed mode; Change PORT to the port number given to you;
+const serverURL = "http://ec2-18-216-101-119.us-east-2.compute.amazonaws.com:3035"; //enable for deployed mode; Change PORT to the port number given to you;
 // const serverURL = ""; 
 //To find your port number: 
 //ssh to ov-research-4.uwaterloo.ca and run the following command: 
